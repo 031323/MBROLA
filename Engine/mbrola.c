@@ -344,6 +344,7 @@ StatePhone NextDiphone(Mbrola* mb)
   	(int)((float)tot_len*1000.0/(float)Freq(diph_dba(mb))),(int)wanted_len);
   */
   
+  if(wanted_len==101)length_Phone( LeftPhone(cur_diph(mb)) )=((float)tot_len*1000.0/(float)Freq(diph_dba(mb)));
 	Length2(prev_diph(mb))=wanted_len==101?len_left: (int) (wanted_len * (float)len_left * (float)Freq(diph_dba(mb))
 								   / 1000.0f / (float)tot_len) ;
 	Length1(cur_diph(mb)) =wanted_len==101?len_right: (int) (wanted_len * (float) Freq(diph_dba(mb)) / 1000.0f - 
