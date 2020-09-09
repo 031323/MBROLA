@@ -340,9 +340,13 @@ StatePhone NextDiphone(Mbrola* mb)
   
 	wanted_len= length_Phone( LeftPhone(cur_diph(mb)) );
   
-	Length2(prev_diph(mb))= (int) (wanted_len * (float)len_left * (float)Freq(diph_dba(mb))
+  /*fprintf(stderr,"%s(%s)%s tot: %d, wanted: %d\n",name_Phone(LeftPhone(prev_diph(mb))),name_Phone(RightPhone(prev_diph(mb))),name_Phone(my_phone),
+  	(int)((float)tot_len*1000.0/(float)Freq(diph_dba(mb))),(int)wanted_len);
+  */
+  
+	Length2(prev_diph(mb))=wanted_len==101?len_left: (int) (wanted_len * (float)len_left * (float)Freq(diph_dba(mb))
 								   / 1000.0f / (float)tot_len) ;
-	Length1(cur_diph(mb)) = (int) (wanted_len * (float) Freq(diph_dba(mb)) / 1000.0f - 
+	Length1(cur_diph(mb)) =wanted_len==101?len_right: (int) (wanted_len * (float) Freq(diph_dba(mb)) / 1000.0f - 
 								   Length2(prev_diph(mb))) ;
 
 	debug_message3("done NextDiphone PHO_OK -> %s-%s\n",
